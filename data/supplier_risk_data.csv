@@ -1,0 +1,46 @@
+Entity_ID,Entity_Type,Supplier_Name,Contract_Term,Performance_Metric,Metric_Value,Risk_Score,Notes
+C1,Carrier,Rapid Trucking Solutions,2024-2027,Cost_Compliance,80.6,8,Current KPI: Cost_Compliance = 80.6
+C2,Carrier,Coastal Logistics Hub,2024-2027,Damage_Rate,0.003,6,Current KPI: Damage_Rate = 0.003
+C3,Carrier,Coastal Logistics Hub,2024-2027,Safety_Score,74.1,8,Current KPI: Safety_Score = 74.1
+C4,Carrier,Apex Warehousing,2024-2027,Cost_Compliance,74.3,8,Current KPI: Cost_Compliance = 74.3
+C5,Carrier,Local Haul Experts,2024-2027,Cost_Compliance,86.5,9,Current KPI: Cost_Compliance = 86.5
+C6,Carrier,Rapid Trucking Solutions,2024-2027,Damage_Rate,0.021,8,Current KPI: Damage_Rate = 0.021
+C7,Carrier,Local Haul Experts,2024-2027,OTD_Rate,0.953,6,Current KPI: OTD_Rate = 0.953
+C8,Carrier,Rapid Trucking Solutions,2024-2027,Damage_Rate,0.029,6,Current KPI: Damage_Rate = 0.029
+C9,Carrier,Global Freight Co.,2024-2027,Cost_Compliance,99.3,4,Current KPI: Cost_Compliance = 99.3
+C10,Carrier,Local Haul Experts,2024-2027,OTD_Rate,0.936,7,Current KPI: OTD_Rate = 0.936
+C11,Carrier,Global Freight Co.,2024-2027,Cost_Compliance,88.2,6,Current KPI: Cost_Compliance = 88.2
+C12,Carrier,Rapid Trucking Solutions,2024-2027,OTD_Rate,0.924,8,Current KPI: OTD_Rate = 0.924
+C13,Carrier,Local Haul Experts,2024-2027,Cost_Compliance,74.7,2,Current KPI: Cost_Compliance = 74.7
+C14,Carrier,Coastal Logistics Hub,2024-2027,OTD_Rate,0.959,5,Current KPI: OTD_Rate = 0.959
+C15,Carrier,Rapid Trucking Solutions,2024-2027,Cost_Compliance,92,4,Current KPI: Cost_Compliance = 92.0
+C16,Carrier,Coastal Logistics Hub,2024-2027,Damage_Rate,0.028,2,Current KPI: Damage_Rate = 0.028
+C17,Carrier,Coastal Logistics Hub,2024-2027,OTD_Rate,0.983,10,Current KPI: OTD_Rate = 0.983
+C18,Carrier,Global Freight Co.,2024-2027,Safety_Score,96.2,5,Current KPI: Safety_Score = 96.2
+C19,Carrier,Local Haul Experts,2024-2027,Damage_Rate,0.003,9,Current KPI: Damage_Rate = 0.003
+C20,Carrier,Coastal Logistics Hub,2024-2027,Safety_Score,76.5,5,Current KPI: Safety_Score = 76.5
+W001,Warehouse,W001 Operations,2024-2027,Safety_Score,93.1,7,Current KPI: Safety_Score = 93.1
+W002,Warehouse,W002 Operations,2024-2027,Safety_Score,96.8,4,Current KPI: Safety_Score = 96.8
+W003,Warehouse,W003 Operations,2024-2027,OTD_Rate,0.932,4,Current KPI: OTD_Rate = 0.932
+W004,Warehouse,W004 Operations,2024-2027,Damage_Rate,0.013,1,Current KPI: Damage_Rate = 0.013
+W005,Warehouse,W005 Operations,2024-2027,OTD_Rate,0.953,5,Current KPI: OTD_Rate = 0.953
+C8,Location,External Risk Monitor,,Road Accident,Medium,7,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+C17,Location,External Risk Monitor,,Road Accident,Medium,5,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+W005,Location,External Risk Monitor,,Typhoon Warning,Critical,10,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.
+C7,Location,External Risk Monitor,,Labor Strike,High,10,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C5,Location,External Risk Monitor,,Road Accident,Medium,7,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+W003,Location,External Risk Monitor,,Typhoon Warning,Critical,8,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.
+C15,Location,External Risk Monitor,,Typhoon Warning,Critical,5,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.
+W002,Location,External Risk Monitor,,Labor Strike,High,9,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C13,Location,External Risk Monitor,,Typhoon Warning,Critical,7,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.
+C15,Location,External Risk Monitor,,Labor Strike,High,10,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C9,Location,External Risk Monitor,,Labor Strike,High,10,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+W001,Location,External Risk Monitor,,Road Accident,Medium,7,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+C5,Location,External Risk Monitor,,Road Accident,Medium,5,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+C8,Location,External Risk Monitor,,Road Accident,Medium,10,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+C19,Location,External Risk Monitor,,Typhoon Warning,Critical,8,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.
+W003,Location,External Risk Monitor,,Road Accident,Medium,9,Road Accident near National Highway 44. Predicted impact: Minor Delay.
+C9,Location,External Risk Monitor,,Labor Strike,High,9,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C4,Location,External Risk Monitor,,Labor Strike,High,9,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C10,Location,External Risk Monitor,,Labor Strike,High,6,Labor Strike near Delhi Industrial Zone. Predicted impact: Pickup/Delivery Block.
+C3,Location,External Risk Monitor,,Typhoon Warning,Critical,7,Typhoon Warning near Bay of Bengal. Predicted impact: Route Delay.

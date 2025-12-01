@@ -1,0 +1,23 @@
+fastapi==0.110.2
+uvicorn==0.29.0
+
+# LangChain ecosystem (fully compatible)
+langchain==0.2.11
+langchain-core==0.2.23
+langchain-community==0.2.6
+langchain-text-splitters==0.2.2
+
+# Vector store
+faiss-cpu==1.8.0
+
+# File handling
+python-multipart==0.0.9
+pandas==2.2.2
+pypdf==4.2.0
+python-docx==1.1.0
+
+# Environment
+python-dotenv==1.0.1
+
+# Networking
+httpx==0.28.1
