@@ -1,18 +1,22 @@
 from fastapi import FastAPI
-from app.api.routes import router
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes import router
+
+# ensure HF offline if you're using local models
+import os
+os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
 
 app = FastAPI(title="RAG Report Generator")
 
-# CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # allow all origins for development
+    allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Include API routes with /api prefix
 app.include_router(router, prefix="/api")
 
 

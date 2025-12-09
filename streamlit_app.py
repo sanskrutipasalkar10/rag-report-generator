@@ -1,57 +1,55 @@
 import streamlit as st
 import requests
 
-# -----------------------------
-# Configuration
-# -----------------------------
-FASTAPI_URL = "http://127.0.0.1:8000"  # backend URL
-UPLOAD_ENDPOINT = f"{FASTAPI_URL}/api/upload-file"
-GENERATE_ENDPOINT = f"{FASTAPI_URL}/api/generate-report"
+BACKEND_BASE = "http://127.0.0.1:8000/api"
+UPLOAD_ENDPOINT = f"{BACKEND_BASE}/upload"
+GENERATE_ENDPOINT = f"{BACKEND_BASE}/generate-report"
+DOWNLOAD_ENDPOINT = f"{BACKEND_BASE}/download-report"
 
-st.title("📄 RAG Report Generator")
+st.title("📄 RAG Report Generator (RAG mode)")
 
-# -----------------------------
-# File Upload Section
-# -----------------------------
-st.header("1️⃣ Upload File")
-uploaded_file = st.file_uploader("Choose a file (PDF, DOCX, CSV)", type=["pdf", "docx", "csv"])
+uploaded_file = st.file_uploader("Choose a file", type=["csv", "pdf", "docx", "xlsx"])
 
 if uploaded_file is not None:
-    st.success(f"File selected: {uploaded_file.name}")
-    
-    files = {"file": (uploaded_file.name, uploaded_file, uploaded_file.type)}
-    
-    if st.button("Upload to Backend"):
+    if st.button("Upload to backend"):
         with st.spinner("Uploading..."):
+            files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
             try:
-                response = requests.post(UPLOAD_ENDPOINT, files=files)
-                if response.status_code == 200:
-                    st.success("✅ File successfully uploaded to backend!")
-                    st.json(response.json())
+                r = requests.post(UPLOAD_ENDPOINT, files=files)
+                if r.status_code == 200:
+                    data = r.json()
+                    st.success("Uploaded!")
+                    st.json(data)
+                    st.session_state["uploaded_file_path"] = data.get("file_path")
                 else:
-                    st.error(f"❌ Upload failed: {response.status_code}")
-                    st.write(response.text)
+                    st.error("Upload failed")
+                    st.json(r.json())
             except Exception as e:
-                st.error(f"Error connecting to backend: {e}")
+                st.error(f"Error: {e}")
 
-# -----------------------------
-# Generate Report Section
-# -----------------------------
-st.header("2️⃣ Generate Report")
-if st.button("Generate Report"):
-    with st.spinner("Generating report..."):
-        try:
-            response = requests.post(GENERATE_ENDPOINT)
-            if response.status_code == 200:
-                st.success("✅ Report generated successfully!")
-                result = response.json()
-                st.json(result)
+instruction_default = "Create an executive summary and list key risks and recommendations."
+instructions = st.text_area("Instructions for the report", value=instruction_default, height=150)
+top_k = st.number_input("Top-K retrieved chunks to use", min_value=1, max_value=20, value=5)
 
-                # If the backend returns a file URL or bytes, you can add a download link
-                if "report_url" in result:
-                    st.markdown(f"[Download Report]({result['report_url']})")
-            else:
-                st.error(f"❌ Report generation failed: {response.status_code}")
-                st.write(response.text)
-        except Exception as e:
-            st.error(f"Error connecting to backend: {e}")
+if st.button("Generate Report (RAG)"):
+    if uploaded_file is None:
+        st.error("Please upload a file first.")
+    else:
+        with st.spinner("Generating report..."):
+            payload = {"instructions": instructions, "top_k": int(top_k)}
+            files = {"file": (uploaded_file.name, uploaded_file.getvalue(), uploaded_file.type)}
+            try:
+                r = requests.post(GENERATE_ENDPOINT, data=payload, files=files)
+                if r.status_code == 200:
+                    data = r.json()
+                    st.success("Report generated")
+                    st.json(data)
+                    report_path = data.get("report_path")
+                    if report_path:
+                        download_url = f"{DOWNLOAD_ENDPOINT}?path={report_path}"
+                        st.markdown(f"[Download report]({download_url})")
+                else:
+                    st.error(f"Failed: {r.status_code}")
+                    st.json(r.json())
+            except Exception as e:
+                st.error(f"Error: {e}")

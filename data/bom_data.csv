@@ -1,0 +1,25 @@
+﻿PRODUCT_CARD_ID,SKU_No,SKU_Name,Station,Quantity,Total_Quantity,Operator,Station,Shift 
+M001,SK0010,Engine_Bus,Line 1 - Station 1,1,10,Bharat,Station 1,A
+M001,SK0013,Axle,Line 1 - Station 2,1,10,Akash,Station 2,A
+M001,SK0014,Gearbox,Line 1 - Station 3,1,10,Jayraj,Station 3,A
+M001,SK0018,Dashboard_Bus,Line 2 - Station 1,1,10,Ahmed,Station 4,A
+M001,SK0010,Engine_Bus,Line 1 - Station 1,1,10,Nikhil Bapat,Station 1,B
+M001,SK0013,Axle,Line 1 - Station 2,1,10,Suresh Kumar,Station 2,B
+M001,SK0014,Gearbox,Line 1 - Station 3,1,10,Hanuman Singh,Station 3,B
+M001,SK0018,Dashboard_Bus,Line 2 - Station 1,1,10,Tarun Shah,Station 4,B
+M002,SK0011,Engine_Truck,Line 1 - Station 1,1,10,Bharat,Station 1,A
+M002,SK0013,Axle,Line 1 - Station 2,1,10,Akash,Station 2,A
+M002,SK0014,Gearbox,Line 1 - Station 3,1,10,Jayraj,Station 3,A
+M002,SK0019,Dashboard_Truck,Line 2 - Station 1,1,10,Ahmed,Station 4,A
+M002,SK0011,Engine_Truck,Line 1 - Station 1,1,10,Nikhil Bapat,Station 1,B
+M002,SK0013,Axle,Line 1 - Station 2,1,10,Suresh Kumar,Station 2,B
+M002,SK0014,Gearbox,Line 1 - Station 3,1,10,Hanuman Singh,Station 3,B
+M002,SK0019,Dashboard_Truck,Line 2 - Station 1,1,10,Tarun Shah,Station 4,B
+M003,SK0012,Engine_Van,Line 1 - Station 1,1,10,Bharat,Station 1,A
+M003,SK0013,Axle,Line 1 - Station 2,1,10,Akash,Station 2,A
+M003,SK0014,Gearbox,Line 1 - Station 3,1,10,Jayraj,Station 3,A
+M003,SK0017,Dashboard_Van,Line 2 - Station 1,1,10,Ahmed,Station 4,A
+M003,SK0012,Engine_Van,Line 1 - Station 1,1,10,Nikhil Bapat,Station 1,B
+M003,SK0013,Axle,Line 1 - Station 2,1,10,Suresh Kumar,Station 2,B
+M003,SK0014,Gearbox,Line 1 - Station 3,1,10,Hanuman Singh,Station 3,B
+M003,SK0017,Dashboard_Van,Line 2 - Station 1,1,10,Tarun Shah,Station 4,B

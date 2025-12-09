@@ -1,29 +1,24 @@
-# embeddings.py
-from langchain_community.embeddings import OllamaEmbeddings
-from app.db.vector_db import get_or_create_collection
-import asyncio
+# app/services/embeddings.py
+from sentence_transformers import SentenceTransformer, util
 
-embedder = OllamaEmbeddings(model="nomic-embed-text")
+print("Loading embedding model...")
+model = SentenceTransformer("all-MiniLM-L6-v2")
+print("Model loaded.")
 
-async def embed_chunk(chunk: str):
-    """Embed a single chunk asynchronously."""
-    return embedder.embed_query(chunk)
+embeddings_store = []   # [(text_chunk, vector)]
 
-async def store_embeddings(text: str, chunk_size: int = 500):
-    """
-    Split text into chunks, embed them asynchronously, and store in Chroma collection.
-    """
-    collection = get_or_create_collection()
-    chunks = [text[i:i + chunk_size] for i in range(0, len(text), chunk_size)]
+def embed_docs(chunks):
+    global embeddings_store
+    embeddings_store = []
+    for chunk in chunks:
+        vec = model.encode(chunk)
+        embeddings_store.append((chunk, vec))
 
-    # Create tasks for asynchronous embedding
-    tasks = [embed_chunk(chunk) for chunk in chunks]
-    embeddings = await asyncio.gather(*tasks)
-
-    # Batch insert into Chroma
-    ids = [f"doc_{i}" for i in range(len(chunks))]
-    collection.add(
-        documents=chunks,
-        embeddings=embeddings,
-        ids=ids
-    )
+def search_similar(query, top_k=5):
+    query_vec = model.encode(query)
+    similarities = [
+        (chunk, util.cos_sim(query_vec, vec).item())
+        for (chunk, vec) in embeddings_store
+    ]
+    similarities.sort(key=lambda x: x[1], reverse=True)
+    return [chunk for chunk, _ in similarities[:top_k]]

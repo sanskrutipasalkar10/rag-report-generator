@@ -1,0 +1,9 @@
+﻿SKU_No,Supplier_Name,Email,Location,Lead_Time_Days,OTD_Percentage,Quality_Score,Fulfillment_Rate,Total_Orders,Late_Deliveries,Avg_Late_Per_Order
+SK0010,Bharat Engines Pvt Ltd,primary.engine@bepl.com,Pune,12,96%,92,98%,120,5,1
+SK0013,AxleTech Industries,supply@axletech.in,Nashik,10,94%,90,97%,140,9,1
+SK0014,GearMaster Transmission Co,orders@gearmaster.co.in,Aurangabad,14,92%,93,96%,160,12,2
+SK0018,DashAuto Panels Ltd (Bus),dashboard@dashauto.com,Chennai,11,95%,91,97%,100,6,1
+SK0011,Torque Engines Ltd (Truck),truck.engine@torque.com,Pune,13,93%,89,95%,130,10,2
+SK0019,DashAuto Panels Ltd (Truck),truckdash@dashauto.com,Chennai,11,95%,90,97%,110,7,1
+SK0012,Vantage Motors Engine Division (Van),van.engine@vantage.com,Indore,12,94%,91,96%,105,8,1
+SK0017,DashAuto Panels Ltd (Van),vanpanel@dashauto.com,Chennai,11,95%,90,97%,115,7,1

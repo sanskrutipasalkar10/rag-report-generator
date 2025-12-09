@@ -1,32 +1,28 @@
-# vector_db.py
-import chromadb
-from chromadb.config import Settings
+# app/db/vector_db.py
+from pathlib import Path
 from app.config import VECTOR_DB_DIR
+import logging
 
-_client = None
+VECTOR_DB_DIR = Path(VECTOR_DB_DIR)
+VECTOR_DB_DIR.mkdir(parents=True, exist_ok=True)
 
-def get_client():
-    global _client
-    if _client is None:
-        # New Chroma client constructor
-        _client = chromadb.Client(
-            Settings(
-                chroma_db_impl="duckdb+parquet",
-                persist_directory=str(VECTOR_DB_DIR)
-            )
-        )
-    return _client
-
-def get_or_create_collection(collection_name: str = "rag_reports"):
-    """
-    Get an existing collection or create a new one.
-    Compatible with new Chroma client API.
-    """
-    client = get_client()
+# Try new API first, fallback if not present
+try:
+    from chromadb import PersistentClient
+    CHROMA_CLIENT = PersistentClient(path=str(VECTOR_DB_DIR))
+    def get_or_create_collection(name: str = "rag_collection"):
+        return CHROMA_CLIENT.get_or_create_collection(name=name)
+except Exception:
+    # fallback to older client style if installed
     try:
-        # New API: get_collection will raise an error if it doesn't exist
-        collection = client.get_collection(name=collection_name)
-    except Exception:
-        # Use the new API to create collection
-        collection = client.create_collection(name=collection_name)
-    return collection
+        import chromadb
+        from chromadb.config import Settings
+        CHROMA_CLIENT = chromadb.Client(Settings(chroma_db_impl="duckdb+parquet", persist_directory=str(VECTOR_DB_DIR)))
+        def get_or_create_collection(name: str = "rag_collection"):
+            try:
+                return CHROMA_CLIENT.get_collection(name=name)
+            except Exception:
+                return CHROMA_CLIENT.create_collection(name=name)
+    except Exception as e:
+        logging.exception("Chroma client import failed")
+        raise
